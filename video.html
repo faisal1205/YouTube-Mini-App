@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Video</title>
+    <style>
+        #singleMovie{
+            width: 90%;
+            height: auto;
+            /* border: 1px solid red; */
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>You Tube</h1>
+    <div id="singleMovie"></div>
+</body>
+</html>
+<script>
+    let Selected = JSON.parse(localStorage.getItem("video"))
+    console.log(Selected)
+
+let singleMovie = document.getElementById("singleMovie")
+
+let Div = document.createElement("div");
+
+let iframe  = document.createElement("iframe") 
+iframe.src = `https://www.youtube.com/embed/${Selected.videoId}`
+iframe.width = "100%"
+iframe.height = "400px"
+iframe.allow = "fullscreen";
+
+let name = document.createElement("h5")
+name.innerText = Selected.title
+
+Div.append(iframe,name)
+singleMovie.append(Div)
+
+
+
+</script>
